@@ -1,0 +1,70 @@
+[
+  {
+    "name": "sip_expiry_query",
+    "description": "RM asks which clients have SIPs expiring soon",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which of my clients have SIPs expiring in the next 30 days?"
+      }
+    ],
+    "expected_tool_use": [
+      {
+        "tool_name": "get_clients_with_expiring_sips",
+        "tool_input": { "rm_id": "RM001", "days_ahead": 30 }
+      }
+    ],
+    "reference": "The agent should list clients whose SIPs expire within 30 days, including fund name, monthly amount, and expiry date.",
+    "criteria": {
+      "contains_expiry_date": "Response must mention expiry dates",
+      "contains_fund_name": "Response must mention the mutual fund name",
+      "contains_inr_amounts": "Response must show SIP amount in rupees",
+      "suggests_action": "Response should suggest contacting the client or drafting a renewal"
+    }
+  },
+  {
+    "name": "sip_renewal_email_draft",
+    "description": "RM asks to draft a SIP renewal email for a specific client",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Draft a SIP renewal email for client C0001"
+      }
+    ],
+    "expected_tool_use": [
+      { "tool_name": "get_mf_holdings" },
+      { "tool_name": "get_sip_schedule" },
+      { "tool_name": "create_email_draft" }
+    ],
+    "reference": "The agent should fetch the client's SIP details, draft a professional Hindi-English email, and stage it for RM approval. The draft must NOT be sent automatically.",
+    "criteria": {
+      "draft_not_sent": "Status must be pending_rm_approval, not sent",
+      "email_has_subject": "Draft must include a subject line",
+      "email_has_client_name": "Email must be personalized with client name",
+      "email_mentions_fund": "Email must mention the fund name and amount",
+      "asks_for_approval": "Agent must ask RM to approve before sending"
+    }
+  },
+  {
+    "name": "sip_renewal_call_approval",
+    "description": "RM asks to call a client about SIP renewal",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Call Rahul about his SIP renewal"
+      }
+    ],
+    "expected_tool_use": [
+      { "tool_name": "get_client_by_name" },
+      { "tool_name": "get_sip_schedule" },
+      { "tool_name": "initiate_voice_call" }
+    ],
+    "reference": "Agent fetches client data, builds Hindi call script with live SIP details, stages the call for RM approval. Call must NOT be initiated automatically.",
+    "criteria": {
+      "call_not_auto_initiated": "Call must be staged for approval, not auto-dialed",
+      "script_in_hindi": "Call script context should be in Hindi",
+      "shows_approve_button": "Response must offer an approval action",
+      "includes_client_mobile": "Response should confirm the mobile number to be called"
+    }
+  }
+]

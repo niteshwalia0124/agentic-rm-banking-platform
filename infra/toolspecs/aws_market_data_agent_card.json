@@ -1,0 +1,39 @@
+{
+  "name": "Agent Teams for RM — Market Data Agent",
+  "version": "1.0.0",
+  "url": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A<YOUR_AWS_ACCOUNT_ID>%3Aruntime%2F<MARKET_DATA_AGENT_RUNTIME_ID>/invocations/",
+  "protocolVersion": "0.3.0",
+  "description": "Provides live stock prices, day change %, 52-week range, volume, and market indices (Nifty 50, Sensex) for NSE/BSE listed securities. Runs on AWS Bedrock AgentCore (us-east-1). Auth: AWS SigV4.",
+  "preferredTransport": "JSONRPC",
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "capabilities": {
+    "streaming": false
+  },
+  "provider": {
+    "organization": "Agent Teams for Relationship Managers",
+    "url": "https://aws.amazon.com/bedrock/agentcore/"
+  },
+  "skills": [
+    {
+      "id": "get_stock_price",
+      "name": "Get Live Stock Price",
+      "description": "Returns current price, day change %, 52-week high/low, and volume for NSE/BSE listed stocks.",
+      "tags": ["stocks", "nse", "bse", "market-data", "india"],
+      "examples": [
+        "Get live price of Infosys",
+        "What is the current price of RELIANCE on NSE?"
+      ]
+    },
+    {
+      "id": "get_market_indices",
+      "name": "Get Market Indices",
+      "description": "Returns current values and day change for Nifty 50, Sensex, Nifty Bank, and Nifty IT.",
+      "tags": ["nifty", "sensex", "indices", "india"],
+      "examples": [
+        "How is the market doing today?",
+        "What is Nifty 50 trading at?"
+      ]
+    }
+  ]
+}

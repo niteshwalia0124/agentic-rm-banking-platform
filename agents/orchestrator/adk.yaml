@@ -1,0 +1,30 @@
+# ADK deployment config for Orchestrator Agent
+# Deploy: adk deploy . --project=$GCP_PROJECT --region=asia-south1
+
+agent:
+  name: rm-orchestrator
+  display_name: "RM Orchestrator Agent"
+  description: "Root agent for Relationship Manager AI system. Routes queries to specialist sub-agents."
+
+runtime:
+  # Vertex AI Agent Engine managed runtime
+  type: agent_engine
+  region: asia-south1            # Mumbai — data stays in India (DPDP Act compliance)
+
+model:
+  name: gemini-3.5-flash
+
+memory:
+  # Memory Bank: agents remember client context across sessions
+  enabled: true
+  type: agent_engine_memory
+
+logging:
+  level: INFO
+  # OTel gen_ai.* traces auto-emitted by ADK — sent to Cloud Trace
+  enable_cloud_trace: true
+
+resources:
+  min_replicas: 1
+  max_replicas: 10               # auto-scales with load
+  timeout_seconds: 120           # allow time for multi-agent orchestration

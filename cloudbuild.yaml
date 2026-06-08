@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - -f
+      - mcp_servers/Dockerfile
+      - -t
+      - gcr.io/$PROJECT_ID/fsi-rm-mcp
+      - .
+images:
+  - gcr.io/$PROJECT_ID/fsi-rm-mcp

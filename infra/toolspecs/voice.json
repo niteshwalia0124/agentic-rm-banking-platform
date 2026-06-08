@@ -1,0 +1,67 @@
+{
+  "tools": [
+    {
+      "name": "list_supported_languages",
+      "description": "List all supported Indian languages for voice calls: Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi, Bengali, Gujarati, Punjabi, English.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "initiate_voice_call",
+      "description": "Initiate an outbound voice call to a client in their preferred language using Gemini Live API + Twilio. Only between 08:00-19:00 IST per RBI Fair Practices Code.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "mobile": { "type": "string", "description": "Mobile number with country code" },
+          "language": { "type": "string", "description": "Language code e.g. hi-IN, ta-IN" },
+          "purpose": { "type": "string", "description": "Call purpose: sip_renewal, portfolio_review, emi_reminder" },
+          "rm_id": { "type": "string" }
+        },
+        "required": ["client_id", "mobile", "language", "purpose", "rm_id"]
+      },
+      "annotations": { "readOnlyHint": false }
+    },
+    {
+      "name": "get_call_status",
+      "description": "Get the current status of an outbound voice call: ringing, in-progress, completed, failed, transcript.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "call_id": { "type": "string" }
+        },
+        "required": ["call_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_recent_calls",
+      "description": "Get recent outbound call history for an RM with outcomes, durations, and transcripts.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "limit": { "type": "integer", "default": 10 }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "simulate_call_outcome",
+      "description": "Simulate a call outcome for PoC demo purposes without placing a real Twilio call.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "purpose": { "type": "string" }
+        },
+        "required": ["client_id", "purpose"]
+      },
+      "annotations": { "readOnlyHint": false }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Agent Teams for RM — Credit Bureau Agent",
+  "version": "1.0.0",
+  "url": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A<YOUR_AWS_ACCOUNT_ID>%3Aruntime%2F<CREDIT_BUREAU_AGENT_RUNTIME_ID>/invocations/",
+  "protocolVersion": "0.3.0",
+  "description": "Fetches CIBIL credit score, active loan count, credit utilization, and payment history for a client by PAN. Simulates CIBIL/Experian bureau data for PoC. Runs on AWS Bedrock AgentCore (us-east-1). Auth: AWS SigV4.",
+  "preferredTransport": "JSONRPC",
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "capabilities": {
+    "streaming": false
+  },
+  "provider": {
+    "organization": "Agent Teams for Relationship Managers",
+    "url": "https://aws.amazon.com/bedrock/agentcore/"
+  },
+  "skills": [
+    {
+      "id": "get_credit_report",
+      "name": "Get Credit Bureau Report",
+      "description": "Returns CIBIL score, active loans, credit utilization %, on-time payment rate, and bureau enquiry history for a given PAN.",
+      "tags": ["cibil", "credit-score", "credit-bureau", "pan", "india"],
+      "examples": [
+        "Get CIBIL score for PAN ABCDE1234F",
+        "What is Rahul Gupta's credit score?"
+      ]
+    }
+  ]
+}

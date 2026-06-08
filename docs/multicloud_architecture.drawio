@@ -1,0 +1,523 @@
+<mxfile host="app.diagrams.net" modified="2026-05-25" version="21.0.0">
+  <diagram name="Multi-Cloud Agentic RM Architecture" id="fsi-rm-multicloud">
+    <mxGraphModel dx="2200" dy="1100" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- BACKGROUND & TITLE -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1900" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Agentic AI for Bank Relationship Managers — Multi-Cloud Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="0" y="18" width="1900" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Google Cloud (GCP) · AWS Bedrock AgentCore · A2A Protocol v1.0 · Model Context Protocol (MCP) · Gemini Enterprise" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontColor=#5F6368;" vertex="1" parent="1">
+          <mxGeometry x="0" y="54" width="1900" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- COLUMN 1: RM INTERFACE -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <mxCell id="rm-col" value="" style="rounded=2;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;strokeWidth=2;arcSize=3;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="90" width="200" height="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="rm-col-title" value="RM Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="30" y="98" width="200" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- Gemini Enterprise -->
+        <mxCell id="ge-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4285F4;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="46" y="136" width="168" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ge-icon" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.gemini;labelBackgroundColor=#ffffff;sketch=0;fillColor=#4285F4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="86" y="148" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ge-label" value="&lt;b&gt;Gemini Enterprise&lt;/b&gt;&lt;br&gt;RM Chat Interface&lt;br&gt;&lt;font color=&apos;#5F6368&apos; size=&apos;1&apos;&gt;Natural language prompts&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="46" y="196" width="168" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- RM persona -->
+        <mxCell id="rm-persona" value="👤 Relationship Manager&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Types in plain English / Hindi&lt;br&gt;Reviews &amp; approves agent outputs&lt;/font&gt;" style="text;html=1;strokeColor=#DADCE0;fillColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="46" y="256" width="168" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- Sample prompts -->
+        <mxCell id="prompts-title" value="Sample Prompts" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=3;fontColor=#5F6368;" vertex="1" parent="1">
+          <mxGeometry x="46" y="342" width="168" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="&quot;What needs my attention today?&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="364" width="168" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="&quot;Show me Sanjay Reddy's 360 view&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="404" width="168" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="&quot;Check SIP expiry + live NAVs&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="444" width="168" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&quot;Draft KYC email for client&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="484" width="168" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="&quot;Send Hindi WhatsApp voice note&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="524" width="168" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="&quot;Call client about SIP renewal&quot;" style="text;html=1;strokeColor=#E8EAED;fillColor=#FFFFFF;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="46" y="564" width="168" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- Protocol labels on left -->
+        <mxCell id="a2a-proto-label" value="A2A Protocol v1.0&lt;br&gt;(JSON-RPC 2.0)" style="text;html=1;strokeColor=#4285F4;fillColor=#E8F0FE;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="56" y="630" width="148" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp-proto-label" value="MCP · OAuth 2.1 + PKCE&lt;br&gt;(Streamable HTTP)" style="text;html=1;strokeColor=#F9AB00;fillColor=#FFF8E1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="56" y="674" width="148" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- Compliance -->
+        <mxCell id="rbi-label" value="⚖️ RBI FREE-AI Framework&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Human-in-loop · Audit trail&lt;br&gt;Agent Identity · Model Armor&lt;/font&gt;" style="text;html=1;strokeColor=#EA4335;fillColor=#FCE8E6;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="46" y="724" width="168" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dpdp-label" value="🔒 DPDP Act 2023&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Data localisation · PII filter&lt;br&gt;SEBI IA Regulations&lt;/font&gt;" style="text;html=1;strokeColor=#EA4335;fillColor=#FCE8E6;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="46" y="794" width="168" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- GCP BOUNDARY -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <mxCell id="gcp-outer" value="" style="rounded=2;whiteSpace=wrap;html=1;fillColor=#F1F8FF;strokeColor=#4285F4;strokeWidth=2.5;dashed=0;arcSize=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="250" y="90" width="1020" height="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="gcp-badge" value="" style="shape=mxgraph.gcp4.gcp;fillColor=#4285F4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="262" y="100" width="36" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gcp-title" value="Google Cloud Platform — us-east1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="304" y="102" width="400" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- ── A2A GATEWAY ─────────────────────────────────────────────── -->
+        <mxCell id="gw-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#34A853;strokeColor=#1E7E34;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="530" y="136" width="210" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-icon" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.cloud_run;labelBackgroundColor=#ffffff;sketch=0;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="546" y="150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gw-label" value="&lt;font color=&apos;#FFFFFF&apos;&gt;&lt;b&gt;A2A Gateway&lt;/b&gt;&lt;br&gt;Cloud Run · fsi-rm-a2a-gateway&lt;br&gt;Auth · Rate Limiting · Audit Log&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="594" y="144" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ── AGENT ENGINE BOUNDARY ───────────────────────────────────── -->
+        <mxCell id="ae-outer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;strokeWidth=1.5;arcSize=3;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="268" y="242" width="980" height="288" as="geometry" />
+        </mxCell>
+        <mxCell id="ae-icon2" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.vertex_ai;labelBackgroundColor=#ffffff;sketch=0;fillColor=#4285F4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="252" width="28" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ae-title" value="Vertex AI Agent Engine (Reasoning Engine) — ADK v1.0  |  rm_orchestrator routes intent to specialist agent teams" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="316" y="252" width="820" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Orchestrator -->
+        <mxCell id="orch" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4285F4;strokeColor=#2A5DB0;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="530" y="292" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="orch-label2" value="&lt;font color=&apos;#FFFFFF&apos;&gt;&lt;b&gt;Orchestrator Agent&lt;/b&gt;&lt;br&gt;Intent Detection · Agent Routing&lt;br&gt;PreloadMemoryTool · Memory Bank&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="292" width="210" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ── 5 AGENT TEAMS ───────────────────────────────────────────── -->
+
+        <!-- Agent 1: Client Intelligence -->
+        <mxCell id="ag1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#34A853;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="276" y="398" width="176" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="ag1-hdr" value="🔍  Client Intelligence Agent" style="text;html=1;strokeColor=none;fillColor=#34A853;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="276" y="398" width="176" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ag1-body" value="360° client view&lt;br&gt;Account balances · Txn history&lt;br&gt;KYC status · CRM interactions&lt;br&gt;Credit score · AA cross-bank data" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="276" y="424" width="176" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Agent 2: Portfolio -->
+        <mxCell id="ag2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#34A853;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="468" y="398" width="176" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="ag2-hdr" value="📈  Portfolio &amp; Investment Agent" style="text;html=1;strokeColor=none;fillColor=#34A853;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="468" y="398" width="176" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ag2-body" value="MF holdings · SIP schedules&lt;br&gt;Demat · Loan LTV · EMIs&lt;br&gt;Live NAVs via AMFI A2A&lt;br&gt;Market prices via BSE/NSE A2A" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="468" y="424" width="176" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Agent 3: Comms -->
+        <mxCell id="ag3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#34A853;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="398" width="176" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="ag3-hdr" value="✉️  Communication Agent" style="text;html=1;strokeColor=none;fillColor=#34A853;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="660" y="398" width="176" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ag3-body" value="Email drafts · WhatsApp messages&lt;br&gt;Meeting scheduling&lt;br&gt;RM approves before any send&lt;br&gt;DPDP Act · RBI Fair Practices" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="424" width="176" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Agent 4: Compliance -->
+        <mxCell id="ag4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#34A853;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="852" y="398" width="176" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="ag4-hdr" value="⚖️  Compliance &amp; Risk Agent" style="text;html=1;strokeColor=none;fillColor=#34A853;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="852" y="398" width="176" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ag4-body" value="KYC expiry tracker · AML flags&lt;br&gt;DPD loan monitoring&lt;br&gt;RBI FREE-AI 7 Sutras&lt;br&gt;Daily compliance digest" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="852" y="424" width="176" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Agent 5: Voice -->
+        <mxCell id="ag5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#34A853;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1044" y="398" width="176" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="ag5-hdr" value="🎙️  Voice Agent" style="text;html=1;strokeColor=none;fillColor=#34A853;align=center;verticalAlign=middle;fontStyle=1;fontSize=10;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1044" y="398" width="176" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ag5-body" value="WhatsApp voice notes (TTS)&lt;br&gt;Outbound AI calls (Gemini Live)&lt;br&gt;11 Indian languages&lt;br&gt;Priya AI · 08:00–19:00 IST" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="1044" y="424" width="176" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Memory Bank -->
+        <mxCell id="mb" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F0FE;strokeColor=#4285F4;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="300" width="94" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="mb-ic" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.vertex_ai;labelBackgroundColor=#ffffff;sketch=0;fillColor=#4285F4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="430" y="308" width="26" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="mb-lbl" value="&lt;b&gt;Memory&lt;/b&gt;&lt;br&gt;Bank" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="308" width="48" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- ── MCP LAYER ────────────────────────────────────────────────── -->
+        <mxCell id="mcp-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F9AB00;strokeWidth=2;arcSize=3;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="268" y="556" width="980" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp-layer-title" value="MCP Servers — Cloud Run (us-east1) · OAuth 2.1 + PKCE · Streamable HTTP · One auditable gateway per bank system" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1;fontColor=#F9AB00;" vertex="1" parent="1">
+          <mxGeometry x="268" y="562" width="980" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mcp1" value="&lt;b&gt;core-banking-mcp&lt;/b&gt;&lt;br&gt;Accounts · Txns · FD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F9AB00;strokeWidth=1.5;arcSize=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="590" width="156" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp2" value="&lt;b&gt;portfolio-mcp&lt;/b&gt;&lt;br&gt;MF · SIP · Demat · Loans" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F9AB00;strokeWidth=1.5;arcSize=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="448" y="590" width="156" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp3" value="&lt;b&gt;comms-mcp&lt;/b&gt;&lt;br&gt;Gmail · WhatsApp · Calendar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F9AB00;strokeWidth=1.5;arcSize=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="616" y="590" width="156" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp4" value="&lt;b&gt;compliance-mcp&lt;/b&gt;&lt;br&gt;KYC · AML · DPD · GRC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F9AB00;strokeWidth=1.5;arcSize=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="784" y="590" width="156" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp5" value="&lt;b&gt;voice-mcp&lt;/b&gt;&lt;br&gt;TTS Scripts · Call Broker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F9AB00;strokeWidth=1.5;arcSize=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="952" y="590" width="156" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ── DATA LAYER (BigQuery) ────────────────────────────────────── -->
+        <mxCell id="bq" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4285F4;strokeWidth=1.5;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="268" y="686" width="980" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="bq-ic2" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.bigquery;labelBackgroundColor=#ffffff;sketch=0;fillColor=#4285F4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="282" y="700" width="36" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="bq-lbl2" value="&lt;b&gt;BigQuery — fsi_rm_poc&lt;/b&gt;  ·  Core banking mock data  ·  Tables: clients · accounts · transactions · mf_holdings · sip_mandates · loans · demat_holdings · kyc_documents · crm_interactions" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="326" y="695" width="910" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ── VOICE INFRASTRUCTURE ────────────────────────────────────── -->
+        <mxCell id="voice-row" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE8E6;strokeColor=#EA4335;strokeWidth=2;arcSize=3;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="268" y="786" width="980" height="116" as="geometry" />
+        </mxCell>
+        <mxCell id="voice-row-title" value="Voice Infrastructure" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#EA4335;" vertex="1" parent="1">
+          <mxGeometry x="284" y="794" width="240" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="broker" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA4335;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="824" width="220" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="broker-ic" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.cloud_run;labelBackgroundColor=#ffffff;sketch=0;fillColor=#EA4335;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="836" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="broker-lbl" value="&lt;b&gt;LiveAPI Broker&lt;/b&gt;&lt;br&gt;Cloud Run (max-instances=1)&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Twilio ↔ Gemini Live WebSocket&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="328" y="830" width="164" height="54" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gl" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA4335;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="516" y="824" width="220" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="gl-ic2" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.gemini;labelBackgroundColor=#ffffff;sketch=0;fillColor=#EA4335;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="526" y="836" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="gl-lbl" value="&lt;b&gt;Gemini Live API&lt;/b&gt;&lt;br&gt;gemini-3.1-flash-live-preview&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Real-time bidirectional voice AI&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="564" y="830" width="164" height="54" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tts" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA4335;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="752" y="824" width="220" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="tts-ic" value="" style="shape=mxgraph.gcp4.resourceIcon;resIcon=mxgraph.gcp4.text_to_speech;labelBackgroundColor=#ffffff;sketch=0;fillColor=#EA4335;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="762" y="836" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="tts-lbl" value="&lt;b&gt;Cloud Text-to-Speech&lt;/b&gt;&lt;br&gt;Neural2 · WaveNet&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;hi-IN · ta-IN · te-IN · 11 langs&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="830" width="164" height="54" as="geometry" />
+        </mxCell>
+
+        <mxCell id="twilio" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA4335;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="988" y="824" width="248" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="twilio-ic2" value="T" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F22F46;strokeColor=none;fontColor=#FFFFFF;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="998" y="836" width="32" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="twilio-lbl" value="&lt;b&gt;Twilio&lt;/b&gt;&lt;br&gt;Outbound Voice Calls · WhatsApp Business&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;India +91 · SIP trunk · Media Stream&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1036" y="830" width="194" height="54" as="geometry" />
+        </mxCell>
+
+        <!-- OTel Observability strip -->
+        <mxCell id="otel-strip" value="📊  OpenTelemetry (gen_ai.* semantic conventions) · Cloud Trace · Cloud Monitoring · Token usage · Latency p95 · Tool call error rate · Human approval rate" style="text;html=1;strokeColor=#9E9E9E;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="268" y="920" width="980" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Agent Registry strip -->
+        <mxCell id="registry-strip" value="🗂️  Agent Registry + Agent Gateway (Model Armor · Prompt injection protection · Cryptographic Agent Identity · Per-RM role policies)" style="text;html=1;strokeColor=#4285F4;fillColor=#E8F0FE;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="268" y="962" width="980" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- AWS BOUNDARY -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <mxCell id="aws-outer" value="" style="rounded=2;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2.5;dashed=0;arcSize=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="90" width="588" height="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="aws-badge" value="AWS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=none;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1302" y="100" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aws-title-txt" value="AWS — us-east-1  |  Bedrock AgentCore" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="100" width="520" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="aws-subtitle" value="External A2A Agents · Invoked via A2A Protocol (SigV4 auth) · Cross-cloud multicloud pattern" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="1302" y="122" width="566" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- A2A Agent Cards label -->
+        <mxCell id="agent-cards" value="Agent Cards (/.well-known/agent-card.json) — Advertise capabilities, auth, endpoints" style="text;html=1;strokeColor=#FF9800;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=8;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="148" width="566" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Agent 1: AMFI -->
+        <mxCell id="amfi-agent" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9800;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="186" width="256" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="amfi-hdr" value="📊  AMFI Agent" style="text;html=1;strokeColor=none;fillColor=#FF9800;align=center;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="186" width="256" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="amfi-body" value="Mutual Fund NAV data&lt;br&gt;SIP performance · Fund ratings&lt;br&gt;Historical returns&lt;br&gt;&lt;br&gt;&lt;b&gt;Real API:&lt;/b&gt; amfiindia.com&lt;br&gt;(free public NAV feed)&lt;br&gt;AMFI India — 44 AMCs" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="214" width="256" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Agent 2: Market Data -->
+        <mxCell id="md-agent" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9800;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="186" width="256" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="md-hdr" value="📉  Market Data Agent" style="text;html=1;strokeColor=none;fillColor=#FF9800;align=center;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="186" width="256" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="md-body" value="Real-time equity prices&lt;br&gt;Corporate actions · F&amp;O data&lt;br&gt;Indices (Nifty, Sensex)&lt;br&gt;&lt;br&gt;&lt;b&gt;Real APIs:&lt;/b&gt; NSE India API&lt;br&gt;BSE India API&lt;br&gt;MoneyControl / Yahoo Finance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="214" width="256" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Agent 3: Credit Bureau -->
+        <mxCell id="cb-agent" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9800;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="366" width="256" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cb-hdr" value="🏦  Credit Bureau Agent" style="text;html=1;strokeColor=none;fillColor=#FF9800;align=center;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="366" width="256" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cb-body" value="Credit scores · Report history&lt;br&gt;Loan enquiries · Defaults&lt;br&gt;Bureau dispute status&lt;br&gt;&lt;br&gt;&lt;b&gt;Real APIs:&lt;/b&gt; CIBIL API&lt;br&gt;Experian India API&lt;br&gt;Equifax India · CRIF" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="394" width="256" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Agent 4: Account Aggregator -->
+        <mxCell id="aa-agent" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9800;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="366" width="256" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="aa-hdr" value="🏛️  Account Aggregator Agent" style="text;html=1;strokeColor=none;fillColor=#FF9800;align=center;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#FFFFFF;rounded=1;arcSize=20;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="366" width="256" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="aa-body" value="Cross-bank holdings (consent)&lt;br&gt;FDs across all banks · SIPs&lt;br&gt;Real-time financial data&lt;br&gt;&lt;br&gt;&lt;b&gt;Real API:&lt;/b&gt; RBI AA Framework&lt;br&gt;2.2B accounts · 200+ FIPs&lt;br&gt;Sahamati / Finvu / Perfios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=10;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1578" y="394" width="256" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- SigV4 auth label -->
+        <mxCell id="sigv4" value="Auth: AWS SigV4 (boto3)&lt;br&gt;Production: Cognito OAuth 2.0" style="text;html=1;strokeColor=#FF9800;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=8;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="542" width="254" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- AWS Bedrock label -->
+        <mxCell id="bedrock-lbl" value="🔧  AWS Bedrock AgentCore Runtime&lt;br&gt;Managed A2A agent hosting · Auto-scaling · SigV4&lt;br&gt;Runtime IDs provisioned per agent" style="text;html=1;strokeColor=#FF9800;fillColor=#FFF3E0;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="590" width="528" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ── REAL DATA SOURCES section in AWS col ────────────────────── -->
+        <mxCell id="real-apis-title" value="Real External Data Sources" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontStyle=1;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="658" width="528" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ds1" value="🏢 AMFI India&lt;br&gt;amfiindia.com/nav&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Free · 44 AMCs · Daily NAV&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="686" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds2" value="📈 NSE India&lt;br&gt;nseindia.com/api&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Equities · F&amp;O · Indices&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="686" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds3" value="📊 BSE India&lt;br&gt;api.bseindia.com&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;3,000+ listed stocks&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1574" y="686" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds4" value="🏦 CIBIL / Experian&lt;br&gt;Credit bureau APIs&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Score · Report · History&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="766" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds5" value="🏛️ RBI AA Framework&lt;br&gt;Sahamati · Finvu&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;2.2B accounts · consent&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="766" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds6" value="📱 Twilio&lt;br&gt;WhatsApp Business&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Voice · SMS · India +91&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1574" y="766" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds7" value="🏦 Core Banking&lt;br&gt;Finacle / BaNCS&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;On-premise via MCP bridge&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1373" y="848" width="120" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ds8" value="📬 CDSL / NSDL&lt;br&gt;Demat APIs&lt;br&gt;&lt;font color=&apos;#5F6368&apos;&gt;Holdings · Corporate actions&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;arcSize=8;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1507" y="848" width="120" height="66" as="geometry" />
+        </mxCell>
+
+        <!-- ── TIME SAVED CALLOUT ─────────────────────────────────────── -->
+        <mxCell id="savings" value="⏱️  ~3–4 hrs/day saved per RM&lt;br&gt;&lt;font color=&apos;#34A853&apos;&gt;80%+ operational tasks automated&lt;/font&gt;" style="text;html=1;strokeColor=#34A853;fillColor=#E6F4EA;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;rounded=1;arcSize=8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="930" width="528" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- Use cases -->
+        <mxCell id="usecases" value="Key Use Cases: Morning Brief · Client 360° · SIP Renewal · Loan Review · KYC Alerts · Email Draft · WhatsApp Voice Note · Outbound AI Call" style="text;html=1;strokeColor=#9E9E9E;fillColor=#F5F5F5;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="1306" y="984" width="528" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- ARROWS -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+
+        <!-- RM → Gateway (A2A) -->
+        <mxCell id="arr-rm-gw" value="A2A" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4285F4;strokeWidth=3;fontColor=#4285F4;fontStyle=1;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ge-box" target="gw-box" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Gateway → Orchestrator -->
+        <mxCell id="arr-gw-orch" value="Vertex AI SDK" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4285F4;strokeWidth=2;fontColor=#4285F4;fontStyle=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="gw-box" target="orch" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Orchestrator ↔ Memory Bank -->
+        <mxCell id="arr-orch-mb" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4285F4;strokeWidth=1.5;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="orch" target="mb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Orchestrator → Agent Teams -->
+        <mxCell id="arr-orch-ag1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#34A853;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="orch" target="ag1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-orch-ag2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#34A853;strokeWidth=2;" edge="1" source="orch" target="ag2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-orch-ag3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#34A853;strokeWidth=2;" edge="1" source="orch" target="ag3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-orch-ag4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#34A853;strokeWidth=2;" edge="1" source="orch" target="ag4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-orch-ag5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#34A853;strokeWidth=2;" edge="1" source="orch" target="ag5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Agent teams → MCP servers -->
+        <mxCell id="arr-ag1-mcp1" value="MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#F9AB00;strokeWidth=2;fontColor=#F9AB00;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ag1" target="mcp1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag2-mcp2" value="MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#F9AB00;strokeWidth=2;fontColor=#F9AB00;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ag2" target="mcp2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag3-mcp3" value="MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#F9AB00;strokeWidth=2;fontColor=#F9AB00;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ag3" target="mcp3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag4-mcp4" value="MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#F9AB00;strokeWidth=2;fontColor=#F9AB00;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ag4" target="mcp4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag5-mcp5" value="MCP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#F9AB00;strokeWidth=2;fontColor=#F9AB00;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ag5" target="mcp5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- MCP → BigQuery -->
+        <mxCell id="arr-mcp-bq" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4285F4;strokeWidth=1.5;fontColor=#4285F4;fontStyle=1;fontSize=9;dashed=1;" edge="1" source="mcp-layer" target="bq" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- voice-mcp → Voice infra -->
+        <mxCell id="arr-vmcp-voice" value="HTTP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#EA4335;strokeWidth=2;fontColor=#EA4335;fontStyle=1;fontSize=9;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="mcp5" target="voice-row" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Broker ↔ Gemini Live -->
+        <mxCell id="arr-broker-gl" value="WebSocket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#EA4335;strokeWidth=2;fontColor=#EA4335;fontStyle=1;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="broker" target="gl" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TTS → Twilio -->
+        <mxCell id="arr-tts-twilio" value="Audio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#EA4335;strokeWidth=2;fontColor=#EA4335;fontStyle=1;fontSize=9;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="tts" target="twilio" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- GCP → AWS A2A calls -->
+        <mxCell id="arr-ag2-amfi" value="A2A · SigV4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#FF9800;strokeWidth=3;fontColor=#FF9800;fontStyle=1;fontSize=11;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ag2" target="amfi-agent" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag2-md" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#FF9800;strokeWidth=2;dashed=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ag2" target="md-agent" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag1-cb" value="A2A · SigV4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#FF9800;strokeWidth=3;fontColor=#FF9800;fontStyle=1;fontSize=11;dashed=1;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ag1" target="cb-agent" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-ag1-aa" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#FF9800;strokeWidth=2;dashed=1;exitX=1;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ag1" target="aa-agent" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- LEGEND (bottom) -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DADCE0;strokeWidth=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1000" width="200" height="148" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1006" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" value="━━  A2A Protocol (GCP internal)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1030" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="━━  MCP Protocol (OAuth 2.1)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#F9AB00;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1050" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" value="- - -  Cross-cloud A2A (SigV4)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#FF9800;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1070" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" value="━━  Voice pipeline (WS / TTS)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#EA4335;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1090" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" value="- - -  Data query (SQL / REST)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#4285F4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1110" width="180" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg6" value="━━  Agent routing (ADK)" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;fontColor=#34A853;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1130" width="180" height="18" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,105 @@
+{
+  "tools": [
+    {
+      "name": "get_client_by_name",
+      "description": "Search for a client by full or partial name. Returns client_id, segment, AUM, RM, risk profile, preferred language, and last contact date.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Full or partial client name" }
+        },
+        "required": ["name"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_account_summary",
+      "description": "Get all bank accounts (savings, current, FD) with balances for a client.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string", "description": "Client ID (e.g. C0001)" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_recent_transactions",
+      "description": "Get significant recent transactions for a client, filtered by number of days and minimum amount in INR.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "days": { "type": "integer", "default": 30 },
+          "min_amount_inr": { "type": "integer", "default": 100000 }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_kyc_status",
+      "description": "Get KYC document status and expiry dates for a client. Flags expired or soon-to-expire documents.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_crm_history",
+      "description": "Get recent CRM interaction history for a client: call notes, email summaries, meeting outcomes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "limit": { "type": "integer", "default": 5 }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_rm_client_list",
+      "description": "Get all clients assigned to an RM, optionally filtered by segment (HNI, MassAffluent, SME).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "segment": { "type": "string", "enum": ["HNI", "MassAffluent", "SME"] }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_credit_bureau_report",
+      "description": "Fetch CIBIL credit score, active loans, and credit history for a client via AWS Credit Bureau agent.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "pan": { "type": "string", "description": "PAN card number (optional)" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_account_aggregator_data",
+      "description": "Fetch cross-bank financial data via RBI Account Aggregator framework: FDs, SIPs, and loans at other banks.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}

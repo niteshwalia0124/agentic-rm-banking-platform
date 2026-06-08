@@ -1,0 +1,99 @@
+{
+  "tools": [
+    {
+      "name": "get_mf_holdings",
+      "description": "Get all mutual fund holdings for a client: scheme name, units, NAV, current value, gain/loss percentage.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_sip_schedule",
+      "description": "Get active SIP mandates for a client: fund name, monthly amount, next debit date, expiry date. Flags SIPs expiring within 30 days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_loan_summary",
+      "description": "Get all active loans for a client: type, outstanding amount, EMI, next due date, LTV ratio, overdue days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_demat_holdings",
+      "description": "Get stock/demat holdings for a client: company, ISIN, quantity, buy price, current price, unrealized P&L.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "top_n": { "type": "integer", "default": 10 }
+        },
+        "required": ["client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_clients_with_expiring_sips",
+      "description": "Get all clients of an RM whose SIPs are expiring within the specified number of days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "days_ahead": { "type": "integer", "default": 30 }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_live_nav",
+      "description": "Get live NAV and returns (1Y/3Y/5Y) for a mutual fund from AMFI via AWS AgentCore.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fund_name": { "type": "string", "description": "Fund name or partial name" }
+        },
+        "required": ["fund_name"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_live_stock_price",
+      "description": "Get live stock price, day change, 52-week range for an NSE/BSE listed stock via AWS AgentCore.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "symbol_or_name": { "type": "string", "description": "NSE/BSE ticker or company name" }
+        },
+        "required": ["symbol_or_name"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_market_indices",
+      "description": "Get current values and day change for major Indian market indices: Nifty 50, Sensex, Nifty Bank, Nifty IT.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}

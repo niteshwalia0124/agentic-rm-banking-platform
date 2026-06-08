@@ -1,0 +1,41 @@
+[
+  {
+    "name": "morning_compliance_digest",
+    "description": "RM requests daily compliance digest",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Give me today's compliance digest"
+      }
+    ],
+    "expected_tool_use": [
+      { "tool_name": "get_daily_compliance_digest" }
+    ],
+    "reference": "Agent returns structured digest with URGENT / THIS WEEK / THIS MONTH buckets covering KYC expiry, overdue EMIs, and nomination gaps.",
+    "criteria": {
+      "has_urgency_buckets": "Response must separate urgent vs this-week vs this-month items",
+      "mentions_kyc": "Response must cover KYC document status",
+      "mentions_dpd": "Response must mention overdue loans/EMIs if any exist",
+      "actionable": "Each alert must suggest a specific action"
+    }
+  },
+  {
+    "name": "stale_clients_query",
+    "description": "RM asks which clients haven't been contacted recently",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which clients have I not contacted in the last 30 days?"
+      }
+    ],
+    "expected_tool_use": [
+      { "tool_name": "get_clients_not_contacted" }
+    ],
+    "reference": "Agent returns a ranked list of clients not contacted in 30+ days, sorted by AUM (highest value clients first).",
+    "criteria": {
+      "sorted_by_aum": "Highest AUM clients should appear first",
+      "shows_days_since_contact": "Must show how many days since last contact",
+      "has_client_names": "Must show client names not just IDs"
+    }
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "tools": [
+    {
+      "name": "create_email_draft",
+      "description": "Create a draft email to a client for RM approval. Never sends automatically.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "rm_id": { "type": "string" },
+          "subject": { "type": "string" },
+          "body": { "type": "string" }
+        },
+        "required": ["client_id", "rm_id", "subject", "body"]
+      },
+      "annotations": { "readOnlyHint": false }
+    },
+    {
+      "name": "create_whatsapp_draft",
+      "description": "Create a WhatsApp message draft to a client for RM approval. Uses approved templates only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": { "type": "string" },
+          "rm_id": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "required": ["client_id", "rm_id", "message"]
+      },
+      "annotations": { "readOnlyHint": false }
+    },
+    {
+      "name": "approve_draft",
+      "description": "RM approves a staged communication draft, triggering actual send via Gmail or WhatsApp Business API.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "draft_id": { "type": "string" },
+          "rm_id": { "type": "string" }
+        },
+        "required": ["draft_id", "rm_id"]
+      },
+      "annotations": { "readOnlyHint": false }
+    },
+    {
+      "name": "get_pending_drafts",
+      "description": "Get all pending communication drafts awaiting RM approval.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "suggest_meeting_slots",
+      "description": "Suggest available meeting time slots for an RM and client based on calendar availability.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "client_id": { "type": "string" },
+          "duration_minutes": { "type": "integer", "default": 30 }
+        },
+        "required": ["rm_id", "client_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}

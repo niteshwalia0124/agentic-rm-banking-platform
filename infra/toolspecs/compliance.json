@@ -1,0 +1,42 @@
+{
+  "tools": [
+    {
+      "name": "get_daily_compliance_digest",
+      "description": "Get today's compliance digest for an RM: KYC expiries, overdue EMIs, SIP expiries, clients not contacted, upcoming birthdays.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_clients_not_contacted",
+      "description": "Get clients who have not been contacted in the specified number of days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "days": { "type": "integer", "default": 30 }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    },
+    {
+      "name": "get_upcoming_birthdays_anniversaries",
+      "description": "Get clients with upcoming birthdays or anniversaries within the specified number of days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "rm_id": { "type": "string" },
+          "days_ahead": { "type": "integer", "default": 7 }
+        },
+        "required": ["rm_id"]
+      },
+      "annotations": { "readOnlyHint": true }
+    }
+  ]
+}

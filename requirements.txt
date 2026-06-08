@@ -1,0 +1,22 @@
+# Agent Identity + A2A extras required for Agent Registry discovery and
+# impersonated-credential auth against IAP-protected Cloud Run MCP services.
+google-adk[a2a,agent-identity]>=1.31.1,<2.0.0
+google-cloud-aiplatform>=1.70.0
+google-cloud-bigquery>=3.25.0
+google-cloud-logging>=3.10.0
+google-cloud-trace>=1.13.0
+mcp>=1.5.0
+fastapi>=0.115.0
+uvicorn>=0.30.0
+httpx>=0.27.0
+pydantic>=2.7.0
+opentelemetry-sdk>=1.25.0
+opentelemetry-exporter-gcp-trace>=1.6.0
+opentelemetry-instrumentation-fastapi>=0.46b0
+python-dotenv>=1.0.0
+boto3>=1.34.0
+botocore>=1.34.0
+google-genai>=1.0.0
+pydub>=0.25.1
+google-cloud-storage>=2.17.0
+twilio>=9.0.0

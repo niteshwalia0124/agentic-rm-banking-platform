@@ -1,0 +1,29 @@
+{
+  "name": "Agent Teams for RM — Account Aggregator Agent",
+  "version": "1.0.0",
+  "url": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A<YOUR_AWS_ACCOUNT_ID>%3Aruntime%2F<ACCOUNT_AGGREGATOR_AGENT_RUNTIME_ID>/invocations/",
+  "protocolVersion": "0.3.0",
+  "description": "Fetches cross-bank financial data for a client via the RBI Account Aggregator (AA) framework. Returns FDs, SIPs, savings accounts, and loans held at other banks (HDFC, Axis, SBI, etc.). Covers 2.2B accounts across 200+ institutions. Runs on AWS Bedrock AgentCore (us-east-1). Auth: AWS SigV4.",
+  "preferredTransport": "JSONRPC",
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "capabilities": {
+    "streaming": false
+  },
+  "provider": {
+    "organization": "Agent Teams for Relationship Managers",
+    "url": "https://aws.amazon.com/bedrock/agentcore/"
+  },
+  "skills": [
+    {
+      "id": "get_cross_bank_data",
+      "name": "Get Cross-Bank Financial Profile",
+      "description": "Returns aggregated financial data across all banks a client uses: FDs, SIPs, savings accounts, loans, and insurance. Requires client consent per RBI AA framework.",
+      "tags": ["account-aggregator", "rbi-aa", "cross-bank", "india", "open-banking"],
+      "examples": [
+        "Show me Rahul Gupta's complete financial profile across all banks",
+        "What FDs does this client hold at other banks?"
+      ]
+    }
+  ]
+}

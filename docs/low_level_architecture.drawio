@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1800" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1360" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- TITLE -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="title" value="Agent Teams for Relationship Managers — Low Level Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=20;fontStyle=1;fontColor=#1a1a2e;" vertex="1" parent="1">
+      <mxGeometry x="200" y="20" width="1500" height="36" as="geometry" />
+    </mxCell>
+    <mxCell id="subtitle" value="GCP (us-east1) + AWS (us-east-1) • Protocols: A2A JSON-RPC 2.0 | MCP StreamableHTTP | WebSocket | SigV4 | OAuth 2.1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+      <mxGeometry x="200" y="56" width="1500" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LAYER 0: RM INTERFACE -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="rm_label" value="RM INTERFACE" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="40" y="82" width="140" height="16" as="geometry" />
+    </mxCell>
+
+    <mxCell id="rm_person" value="👤 Nitesh Walia&lt;br&gt;Relationship Manager&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;RM001 | Cymbal Bank&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;arcSize=10;" vertex="1" parent="1">
+      <mxGeometry x="40" y="98" width="150" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gemini_enterprise" value="&lt;b&gt;Gemini Enterprise&lt;/b&gt;&lt;br&gt;Agentspace Chat&lt;br&gt;&lt;font style=&apos;font-size:9px&apos; color=&apos;#555555&apos;&gt;vertexaisearch.cloud.google.com&lt;br&gt;FSI Relationship Manager AI agent&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a73e8;strokeColor=#1557b0;fontColor=#ffffff;fontSize=11;arcSize=6;" vertex="1" parent="1">
+      <mxGeometry x="620" y="90" width="360" height="68" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- GCP OUTER BOUNDARY -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="gcp_outer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#1a73e8;strokeWidth=2.5;arcSize=2;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="40" y="210" width="1260" height="940" as="geometry" />
+    </mxCell>
+    <mxCell id="gcp_badge" value="Google Cloud Platform — us-east1" style="text;html=1;strokeColor=none;fillColor=#1a73e8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;arcSize=50;" vertex="1" parent="1">
+      <mxGeometry x="40" y="210" width="260" height="28" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LAYER 1: A2A GATEWAY -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="gw_label" value="A2A GATEWAY LAYER" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="56" y="246" width="200" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="a2a_gateway" value="&lt;b&gt;fsi-rm-a2a-gateway&lt;/b&gt;&lt;br&gt;Cloud Run • min-instances=1&lt;br&gt;&lt;font style=&apos;font-size=9px&apos;&gt;gateway/a2a_server.py&lt;br&gt;Receives A2A JSON-RPC | Routes to Agent Engine&lt;br&gt;Parses contextId from params.message.contextId&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1a73e8;strokeWidth=2;fontSize=10;arcSize=6;" vertex="1" parent="1">
+      <mxGeometry x="480" y="262" width="380" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LAYER 2: AGENT ENGINE + ORCHESTRATOR -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="ae_label" value="AGENT ORCHESTRATION LAYER — Vertex AI Agent Engine" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="56" y="346" width="480" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="agent_engine_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#d93025;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+      <mxGeometry x="56" y="362" width="1228" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="ae_inner_label" value="Vertex AI Reasoning Engine — ID: 8386758037326528512" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#d93025;" vertex="1" parent="1">
+      <mxGeometry x="68" y="366" width="480" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="orchestrator" value="&lt;b&gt;Orchestrator Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/orchestrator/agent.py&lt;br&gt;LlmAgent • Gemini 3.5 Flash&lt;br&gt;PreloadMemoryTool (Memory Bank)&lt;br&gt;Routes intent → 5 AgentTools&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#d93025;strokeWidth=0;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="390" y="382" width="560" height="88" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LAYER 3: 5 SUB-AGENTS -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="agents_label" value="SPECIALIST SUB-AGENTS — LlmAgent • Gemini 3.5 Flash (all)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="56" y="496" width="560" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ag_compliance" value="&lt;b&gt;compliance_agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/compliance/agent.py&lt;br&gt;KYC status · AML flags&lt;br&gt;EMI overdue · Regulatory alerts&lt;br&gt;Daily compliance digest&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="56" y="514" width="196" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ag_client" value="&lt;b&gt;client_intel_agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/client_intel/agent.py&lt;br&gt;360° client profile&lt;br&gt;Account balances · CRM history&lt;br&gt;Credit bureau · AA data&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="264" y="514" width="196" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ag_portfolio" value="&lt;b&gt;portfolio_agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/portfolio/agent.py&lt;br&gt;MF holdings · SIP schedules&lt;br&gt;Loan details · NAV data&lt;br&gt;+ AMFI/Market FunctionTools&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="472" y="514" width="196" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ag_comms" value="&lt;b&gt;comms_agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/comms/agent.py&lt;br&gt;Email drafting · WhatsApp text&lt;br&gt;Meeting invites&lt;br&gt;RM approval before send&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="680" y="514" width="196" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ag_voice" value="&lt;b&gt;voice_agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;agents/voice/agent.py&lt;br&gt;WhatsApp voice notes (TTS)&lt;br&gt;Outbound AI calls (Live API)&lt;br&gt;note_id script locking&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="888" y="514" width="196" height="88" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LAYER 4: MCP SERVERS -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="mcp_label" value="MCP SERVER LAYER — Cloud Run • min-instances=1 • --no-allow-unauthenticated • OAuth 2.1 via fsi-rm-mcp-invoker SA" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="56" y="616" width="860" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="mcp_compliance" value="&lt;b&gt;fsi-rm-compliance-mcp&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;compliance_mcp.py&lt;br&gt;Tools: get_kyc_status&lt;br&gt;get_aml_alerts&lt;br&gt;get_daily_compliance_digest&lt;br&gt;BigQuery: kyc_documents, clients&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef7e0;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="56" y="634" width="196" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="mcp_core" value="&lt;b&gt;fsi-rm-core-banking-mcp&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;core_banking_mcp.py&lt;br&gt;Tools: get_client_profile&lt;br&gt;get_account_summary&lt;br&gt;get_transaction_history&lt;br&gt;BigQuery: clients, accounts, txns&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef7e0;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="264" y="634" width="196" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="mcp_portfolio" value="&lt;b&gt;fsi-rm-portfolio-mcp&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;portfolio_mcp.py&lt;br&gt;Tools: get_mf_holdings&lt;br&gt;get_sip_mandates, get_loans&lt;br&gt;get_expiring_sips(rm_id)&lt;br&gt;BigQuery: mf_holdings, sip_mandates&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef7e0;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="472" y="634" width="196" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="mcp_comms" value="&lt;b&gt;fsi-rm-comms-mcp&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;comms_mcp.py&lt;br&gt;Tools: draft_email&lt;br&gt;send_email (Gmail API)&lt;br&gt;send_whatsapp_text&lt;br&gt;Twilio WhatsApp Business API&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef7e0;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="680" y="634" width="196" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="mcp_voice" value="&lt;b&gt;fsi-rm-voice-mcp&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;voice_mcp.py&lt;br&gt;build_voice_note_script() → note_id&lt;br&gt;send_whatsapp_voice_note(note_id)&lt;br&gt;initiate_voice_call() → call_id&lt;br&gt;get_call_status(), list_languages()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef7e0;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="888" y="634" width="196" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- VOICE INFRA STACK (GCP) -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="voice_infra_label" value="VOICE INFRASTRUCTURE" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="496" width="200" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="voice_infra_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9334e6;strokeWidth=1.5;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="514" width="188" height="220" as="geometry" />
+    </mxCell>
+
+    <mxCell id="liveapi_broker" value="&lt;b&gt;fsi-rm-liveapi-broker&lt;/b&gt;&lt;br&gt;Cloud Run&lt;br&gt;max-instances=&lt;b&gt;1&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;bridge/liveapi_broker.py&lt;br&gt;WebSocket /twilio/{call_id}&lt;br&gt;POST /calls/{id}/prepare&lt;br&gt;CALL_CONTEXT in-memory dict&lt;br&gt;Transcript → GCS on call end&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9334e6;strokeWidth=0;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1108" y="522" width="172" height="110" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gemini_live" value="&lt;b&gt;Gemini 3 Live API&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;gemini-3.1-flash-live-preview&lt;br&gt;Bidirectional audio (PCM 24kHz)&lt;br&gt;Hindi STT+TTS+Reasoning&lt;br&gt;Barge-in · VAD · Transcription&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9334e6;strokeWidth=0;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1108" y="640" width="172" height="86" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gemini_tts" value="&lt;b&gt;Gemini 3.1 Flash TTS&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;gemini-3.1-flash-tts-preview&lt;br&gt;Voice: Autonoe (female)&lt;br&gt;PCM 24kHz → OGG/Opus&lt;br&gt;Director&apos;s Notes style control&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9334e6;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="888" y="748" width="196" height="80" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- GCP STORAGE LAYER -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="storage_label" value="GCP STORAGE LAYER" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="56" y="750" width="200" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="bigquery" value="&lt;b&gt;BigQuery&lt;/b&gt;&lt;br&gt;<YOUR_GCP_PROJECT>.fsi_rm_poc&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;Tables: clients · accounts&lt;br&gt;mf_holdings · sip_mandates&lt;br&gt;loans · kyc_documents&lt;br&gt;crm_interactions · transactions&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#1a73e8;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="56" y="768" width="180" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gcs_audio" value="&lt;b&gt;GCS: fsi-rm-voice-notes&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;voice-notes/WA-{8HEX}.ogg&lt;br&gt;Public read (Twilio fetches)&lt;br&gt;WhatsApp audio delivery&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="264" y="768" width="180" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="gcs_transcripts" value="&lt;b&gt;GCS: fsi-rm-call-transcripts&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;{CALL-ID}.json&lt;br&gt;Private (compliance record)&lt;br&gt;[{speaker, text, ts},...] &lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#d93025;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="472" y="768" width="180" height="100" as="geometry" />
+    </mxCell>
+
+    <mxCell id="vertex_memory" value="&lt;b&gt;Vertex AI Memory Bank&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;PreloadMemoryTool&lt;br&gt;Cross-session client context&lt;br&gt;RM preferences &amp; history&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#d93025;strokeWidth=1.5;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="680" y="768" width="180" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- TELEPHONY (bottom GCP) -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="twilio_box" value="&lt;b&gt;Twilio&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;Outbound Calls (Calls.json API)&lt;br&gt;TwiML Media Streams → broker&lt;br&gt;WhatsApp Business API&lt;br&gt;AC986d20054c38...(sandbox)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#e65100;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="748" width="188" height="120" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- AWS OUTER BOUNDARY -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="aws_outer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ff6d00;strokeWidth=2.5;arcSize=2;" vertex="1" parent="1">
+      <mxGeometry x="1340" y="210" width="540" height="740" as="geometry" />
+    </mxCell>
+    <mxCell id="aws_badge" value="Amazon Web Services — us-east-1" style="text;html=1;strokeColor=none;fillColor=#ff6d00;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontStyle=1;fontColor=#ffffff;arcSize=50;" vertex="1" parent="1">
+      <mxGeometry x="1340" y="210" width="260" height="28" as="geometry" />
+    </mxCell>
+
+    <mxCell id="agentcore_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#ff6d00;strokeWidth=1.5;arcSize=4;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="248" width="508" height="420" as="geometry" />
+    </mxCell>
+    <mxCell id="agentcore_label" value="AWS Bedrock AgentCore Runtime" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1;fontColor=#ff6d00;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="252" width="508" height="16" as="geometry" />
+    </mxCell>
+
+    <!-- 4 AWS Agents -->
+    <mxCell id="aws_amfi" value="&lt;b&gt;AMFI Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;fsi_rm_amfi_a2a_runtime&lt;br&gt;Mutual Fund NAV data&lt;br&gt;Live from AMFI India API&lt;br&gt;Returns: NAV, returns, AUM&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ff6d00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1368" y="278" width="220" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="aws_market" value="&lt;b&gt;Market Data Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;fsi_rm_market_data_agent_a2a&lt;br&gt;BSE / NSE live prices&lt;br&gt;Corporate actions · Indices&lt;br&gt;Returns: price, change, volume&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ff6d00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1630" y="278" width="220" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="aws_credit" value="&lt;b&gt;Credit Bureau Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;fsi_rm_credit_bureau_agent_a2a&lt;br&gt;CIBIL / Experian scores&lt;br&gt;Credit report · DPD history&lt;br&gt;Input: PAN number&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ff6d00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1368" y="386" width="220" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="aws_aa" value="&lt;b&gt;Account Aggregator Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;fsi_rm_account_aggregator_agent_a2a&lt;br&gt;RBI AA Framework&lt;br&gt;Cross-bank holdings (2.2B accounts)&lt;br&gt;Input: customer_id + consent&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ff6d00;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+      <mxGeometry x="1630" y="386" width="220" height="88" as="geometry" />
+    </mxCell>
+
+    <mxCell id="a2a_proto_label" value="A2A JSON-RPC 2.0 • method: message/send • SigV4 Auth&lt;br&gt;Header: X-Amzn-Bedrock-AgentCore-Runtime-Session-Id (≥33 chars)&lt;br&gt;Parts format: {kind: &quot;text&quot;} • Agent card: /.well-known/agent-card.json" style="text;html=1;strokeColor=#ff6d00;fillColor=#fff3e0;align=center;fontSize=9;rounded=1;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="484" width="508" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- AWS External Data Sources -->
+    <mxCell id="aws_ext_label" value="EXTERNAL DATA SOURCES" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="546" width="508" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ext_amfi" value="AMFI India&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;amfiindia.com API&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1368" y="564" width="100" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_bse" value="BSE / NSE&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;Market feeds&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1486" y="564" width="100" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_cibil" value="CIBIL / Experian&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;Credit scores&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1604" y="564" width="110" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_aa" value="RBI AA Framework&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;200+ institutions&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1732" y="564" width="120" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- External comms systems (bottom right of AWS box) -->
+    <mxCell id="aws_ext2_label" value="COMMUNICATION CHANNELS" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=9;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="644" width="508" height="14" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ext_wa" value="WhatsApp&lt;br&gt;Business API&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;+14155238886 (sandbox)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e6f4ea;strokeColor=#34a853;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1368" y="662" width="150" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_gmail" value="Gmail API&lt;br&gt;Google Workspace&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;OAuth 2.0&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e8f0fe;strokeColor=#1a73e8;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1536" y="662" width="150" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_client_phone" value="Client Mobile&lt;br&gt;+91 9154314766&lt;br&gt;&lt;font style=&apos;font-size:9px&apos;&gt;Receives calls + WhatsApp&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fce8e6;strokeColor=#d93025;fontSize=9;" vertex="1" parent="1">
+      <mxGeometry x="1700" y="662" width="140" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LEGEND -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <mxCell id="legend_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f9f9;strokeColor=#cccccc;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="1340" y="970" width="540" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_title" value="Protocol &amp; Component Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="978" width="300" height="16" as="geometry" />
+    </mxCell>
+    <mxCell id="l1" value="━━  A2A JSON-RPC 2.0 (Gemini Enterprise → Gateway → Agent Engine → AWS)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#1a73e8;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="998" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l2" value="━━  MCP StreamableHTTP + OAuth 2.1 (sub-agent → MCP server)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#f9ab00;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1016" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l3" value="━━  A2A + SigV4 (GCP portfolio_agent / client_intel_agent → AWS AgentCore)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#ff6d00;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1034" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l4" value="━━  WebSocket (Twilio Media Streams ↔ liveapi-broker ↔ Gemini Live)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#9334e6;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1052" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l5" value="- - -  HTTPS REST (MCP → BigQuery, Twilio → GCS, agent → Gemini APIs)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1070" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l6" value="Script Locking: build_voice_note_script() → note_id (first-build-wins) → send_whatsapp_voice_note(note_id)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#9334e6;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1090" width="510" height="14" as="geometry" />
+    </mxCell>
+    <mxCell id="l7" value="Transcript: Gemini Live chunks += _last_gemini_text → flush on turn_complete + finally → GCS" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#9334e6;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="1356" y="1108" width="510" height="14" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- ARROWS -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+
+    <!-- RM → Gemini Enterprise -->
+    <mxCell id="arr_rm_ge" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#1a73e8;strokeWidth=2;" edge="1" source="rm_person" target="gemini_enterprise" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Gemini Enterprise → A2A Gateway -->
+    <mxCell id="arr_ge_gw" value="A2A JSON-RPC 2.0&lt;br&gt;method: message/stream&lt;br&gt;contextId in params.message" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#1a73e8;strokeWidth=2.5;fontSize=9;fontColor=#1a73e8;fontStyle=2;" edge="1" source="gemini_enterprise" target="a2a_gateway" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- A2A Gateway → Orchestrator -->
+    <mxCell id="arr_gw_orch" value="A2A → Agent Engine&lt;br&gt;InMemorySessionService" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d93025;strokeWidth=2;fontSize=9;fontColor=#d93025;" edge="1" source="a2a_gateway" target="orchestrator" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Orchestrator → Memory Bank -->
+    <mxCell id="arr_orch_mem" value="PreloadMemoryTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d93025;strokeWidth=1.5;fontSize=9;fontColor=#d93025;dashed=1;" edge="1" source="orchestrator" target="vertex_memory" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Orchestrator → Sub-agents -->
+    <mxCell id="arr_orch_comp" value="AgentTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;" edge="1" source="orchestrator" target="ag_compliance" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_orch_client" value="AgentTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;" edge="1" source="orchestrator" target="ag_client" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_orch_port" value="AgentTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;" edge="1" source="orchestrator" target="ag_portfolio" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_orch_comms" value="AgentTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;" edge="1" source="orchestrator" target="ag_comms" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_orch_voice" value="AgentTool" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;" edge="1" source="orchestrator" target="ag_voice" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Sub-agents → MCP Servers (MCP StreamableHTTP) -->
+    <mxCell id="arr_comp_mcp" value="MCP&lt;br&gt;OAuth 2.1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=8;fontColor=#e37400;" edge="1" source="ag_compliance" target="mcp_compliance" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_client_mcp" value="MCP&lt;br&gt;OAuth 2.1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=8;fontColor=#e37400;" edge="1" source="ag_client" target="mcp_core" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_port_mcp" value="MCP&lt;br&gt;OAuth 2.1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=8;fontColor=#e37400;" edge="1" source="ag_portfolio" target="mcp_portfolio" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_comms_mcp" value="MCP&lt;br&gt;OAuth 2.1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=8;fontColor=#e37400;" edge="1" source="ag_comms" target="mcp_comms" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_voice_mcp" value="MCP&lt;br&gt;OAuth 2.1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#f9ab00;strokeWidth=1.5;fontSize=8;fontColor=#e37400;" edge="1" source="ag_voice" target="mcp_voice" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- MCP Servers → BigQuery -->
+    <mxCell id="arr_mcp_bq1" value="SQL" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;fontSize=8;" edge="1" source="mcp_compliance" target="bigquery" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_mcp_bq2" value="SQL" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;fontSize=8;" edge="1" source="mcp_core" target="bigquery" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_mcp_bq3" value="SQL" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;fontSize=8;" edge="1" source="mcp_portfolio" target="bigquery" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- voice_mcp → TTS + Broker -->
+    <mxCell id="arr_voicemcp_tts" value="REST (Gemini API)&lt;br&gt;PCM 24kHz → OGG" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9334e6;strokeWidth=1.5;fontSize=8;fontColor=#9334e6;" edge="1" source="mcp_voice" target="gemini_tts" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_voicemcp_broker" value="POST /prepare&lt;br&gt;HTTPS" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9334e6;strokeWidth=1.5;fontSize=8;fontColor=#9334e6;" edge="1" source="mcp_voice" target="liveapi_broker" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_voicemcp_twilio" value="Calls.json API&lt;br&gt;Twilio dials client" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#e65100;strokeWidth=1.5;fontSize=8;fontColor=#e65100;" edge="1" source="mcp_voice" target="twilio_box" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- TTS → GCS Audio -->
+    <mxCell id="arr_tts_gcs" value="OGG upload" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="gemini_tts" target="gcs_audio" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Broker → Gemini Live -->
+    <mxCell id="arr_broker_live" value="WebSocket&lt;br&gt;PCM 16kHz ↔ PCM 24kHz" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9334e6;strokeWidth=2;fontSize=8;fontColor=#9334e6;" edge="1" source="liveapi_broker" target="gemini_live" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Broker → Transcripts -->
+    <mxCell id="arr_broker_transcripts" value="on call end&lt;br&gt;GCS upload" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d93025;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="liveapi_broker" target="gcs_transcripts" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Twilio → Client Phone (via Media Streams → Broker) -->
+    <mxCell id="arr_twilio_broker" value="Media Streams&lt;br&gt;WebSocket (μ-law 8kHz)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9334e6;strokeWidth=2;fontSize=8;fontColor=#9334e6;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" source="twilio_box" target="liveapi_broker" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- GCS Audio → Twilio → WhatsApp -->
+    <mxCell id="arr_gcs_twilio" value="MediaUrl&lt;br&gt;(public fetch)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#e65100;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="gcs_audio" target="twilio_box" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Cross-cloud A2A arrows (GCP → AWS) -->
+    <mxCell id="arr_port_aws" value="A2A + SigV4&lt;br&gt;FunctionTool wrapper&lt;br&gt;get_mutual_fund_nav()&lt;br&gt;get_market_data()" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#ff6d00;strokeWidth=2.5;fontSize=8;fontColor=#ff6d00;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" source="ag_portfolio" target="aws_outer" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1310" y="558" />
+          <mxPoint x="1310" y="320" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <mxCell id="arr_client_aws" value="A2A + SigV4&lt;br&gt;get_credit_bureau_report()&lt;br&gt;get_account_aggregator_data()" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#ff6d00;strokeWidth=2;fontSize=8;fontColor=#ff6d00;dashed=1;" edge="1" source="ag_client" target="aws_outer" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1320" y="558" />
+          <mxPoint x="1320" y="380" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- AWS Agents → External Data Sources -->
+    <mxCell id="arr_amfi_ext" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" source="aws_amfi" target="ext_amfi" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_market_ext" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" source="aws_market" target="ext_bse" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_credit_ext" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" source="aws_credit" target="ext_cibil" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_aa_ext" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;" edge="1" source="aws_aa" target="ext_aa" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- comms_mcp → Gmail + WhatsApp -->
+    <mxCell id="arr_comms_wa" value="WhatsApp API" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="mcp_comms" target="ext_wa" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="arr_comms_gmail" value="Gmail OAuth 2.0" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#1a73e8;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="mcp_comms" target="ext_gmail" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Twilio → Client Phone -->
+    <mxCell id="arr_twilio_phone" value="Outbound call&lt;br&gt;+91 9154314766" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#e65100;strokeWidth=2;fontSize=8;" edge="1" source="twilio_box" target="ext_client_phone" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- WhatsApp → Client Phone -->
+    <mxCell id="arr_wa_phone" value="WhatsApp msg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#34a853;strokeWidth=1.5;fontSize=8;dashed=1;" edge="1" source="ext_wa" target="ext_client_phone" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

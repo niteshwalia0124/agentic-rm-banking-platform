@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RM Voice Coach — Live</title>
+<style>
+  :root {
+    --bg: #0e1116;
+    --panel: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--text);
+    display: grid; grid-template-columns: 1fr 1fr; height: 100vh;
+  }
+  .panel {
+    border-right: 1px solid var(--border);
+    padding: 16px; overflow-y: auto;
+  }
+  .panel:last-child { border-right: none; }
+  h2 { margin: 0 0 12px 0; font-size: 14px; font-weight: 600;
+       text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  .header {
+    grid-column: 1 / -1;
+    padding: 12px 16px; background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .header h1 { margin: 0; font-size: 16px; }
+  .badge {
+    padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;
+    background: var(--panel); border: 1px solid var(--border);
+  }
+  .badge.live { background: rgba(63,185,80,0.15); color: var(--green); border-color: var(--green); }
+  .badge.dot::before {
+    content: "●"; margin-right: 6px; animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100% {opacity:1;} 50% {opacity:0.4;} }
+
+  /* Transcript */
+  .turn { padding: 8px 10px; margin: 6px 0; border-radius: 8px;
+          font-size: 13px; line-height: 1.4; }
+  .turn.client { background: rgba(88,166,255,0.1); border-left: 3px solid var(--blue); }
+  .turn.rm { background: rgba(188,140,255,0.08); border-left: 3px solid var(--purple); }
+  .turn .speaker { font-size: 11px; color: var(--muted); margin-bottom: 2px;
+                   text-transform: uppercase; font-weight: 600; }
+
+  /* Hints */
+  .hint {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px; margin: 10px 0;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn { from {opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+  .hint.urgency-high { border-left: 4px solid var(--red); }
+  .hint.urgency-medium { border-left: 4px solid var(--yellow); }
+  .hint.urgency-low { border-left: 4px solid var(--green); }
+  .hint .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .hint .sentiment {
+    padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase;
+  }
+  .sent-positive, .sent-interested { background: rgba(63,185,80,0.2); color: var(--green); }
+  .sent-neutral { background: rgba(139,148,158,0.2); color: var(--muted); }
+  .sent-hesitant, .sent-confused { background: rgba(210,153,34,0.2); color: var(--yellow); }
+  .sent-frustrated { background: rgba(248,81,73,0.2); color: var(--red); }
+  .hint .signal { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+  .hint .action {
+    background: rgba(88,166,255,0.1); padding: 8px 10px;
+    border-radius: 6px; font-size: 13px; margin: 6px 0;
+  }
+  .hint .phrasing {
+    background: rgba(188,140,255,0.1); padding: 10px;
+    border-radius: 6px; font-size: 14px; font-style: italic;
+    border: 1px dashed rgba(188,140,255,0.4);
+    margin-top: 6px;
+  }
+  .hint .compliance {
+    background: rgba(248,81,73,0.15); color: var(--red);
+    padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    margin-top: 6px;
+  }
+  .ts { font-size: 10px; color: var(--muted); float: right; }
+  .empty { color: var(--muted); font-style: italic; padding: 12px; font-size: 13px; }
+
+  /* Sentiment bar */
+  .sentiment-bar {
+    display: flex; gap: 2px; padding: 8px 0; height: 24px;
+  }
+  .sentiment-bar div { flex: 1; border-radius: 2px; opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎙️ RM Voice Coach <span id="meta" style="color: var(--muted); font-weight: normal; margin-left: 12px;"></span></h1>
+  <div>
+    <span class="badge dot live" id="conn">CONNECTING</span>
+    <span class="badge" id="lang">—</span>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>📞 Live Transcript</h2>
+  <div class="sentiment-bar" id="sentbar"></div>
+  <div id="transcript"><div class="empty">Waiting for call to begin…</div></div>
+</div>
+
+<div class="panel">
+  <h2>💡 Coaching Hints</h2>
+  <div id="hints"><div class="empty">Hints will appear here as the conversation develops.</div></div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const callId = params.get("call_id") || "demo-call";
+  const wsProto = window.location.protocol === "https:" ? "wss:" : "ws:";
+  const wsUrl = `${wsProto}//${window.location.host}/coach/${callId}`;
+
+  const $transcript = document.getElementById("transcript");
+  const $hints = document.getElementById("hints");
+  const $conn = document.getElementById("conn");
+  const $meta = document.getElementById("meta");
+  const $lang = document.getElementById("lang");
+  const $sentbar = document.getElementById("sentbar");
+
+  let firstTranscript = true;
+  let firstHint = true;
+  const sentColorMap = {
+    positive: "#3fb950", interested: "#3fb950", neutral: "#8b949e",
+    hesitant: "#d29922", confused: "#d29922",
+    frustrated: "#f85149"
+  };
+
+  const ws = new WebSocket(wsUrl);
+
+  ws.onopen = () => {
+    $conn.textContent = "LIVE";
+    // Keepalive every 20s
+    setInterval(() => { try { ws.send("ping"); } catch (_) {} }, 20000);
+  };
+  ws.onclose = () => {
+    $conn.textContent = "DISCONNECTED";
+    $conn.style.background = "rgba(248,81,73,0.15)";
+    $conn.style.color = "#f85149";
+    $conn.style.borderColor = "#f85149";
+  };
+  ws.onerror = () => { $conn.textContent = "ERROR"; };
+
+  ws.onmessage = (evt) => {
+    const data = JSON.parse(evt.data);
+    if (data.type === "init") {
+      const m = data.metadata || {};
+      if (m.client_name) $meta.textContent = `— Client: ${m.client_name} (${m.client_id || ""})  •  RM: ${m.rm_id || ""}`;
+      if (m.language) $lang.textContent = m.language;
+      (data.history || []).forEach(addHint);
+    } else if (data.type === "transcript") {
+      addTurn(data.chunk);
+    } else if (data.type === "hint") {
+      addHint(data.hint);
+    }
+  };
+
+  function addTurn(chunk) {
+    if (firstTranscript) { $transcript.innerHTML = ""; firstTranscript = false; }
+    const div = document.createElement("div");
+    div.className = "turn " + (chunk.speaker === "client" ? "client" : "rm");
+    div.innerHTML = `<div class="speaker">${chunk.speaker}</div>${escape(chunk.text || "")}`;
+    $transcript.appendChild(div);
+    $transcript.scrollTop = $transcript.scrollHeight;
+  }
+
+  function addHint(hint) {
+    if (firstHint) { $hints.innerHTML = ""; firstHint = false; }
+    const urgency = hint.urgency || "low";
+    const sent = (hint.sentiment || "neutral").toLowerCase();
+    const div = document.createElement("div");
+    div.className = `hint urgency-${urgency}`;
+    div.innerHTML = `
+      <div class="row">
+        <span class="sentiment sent-${sent}">${sent}</span>
+        <span class="ts">${hint.ts ? new Date(hint.ts*1000).toLocaleTimeString() : ""}</span>
+      </div>
+      <div class="signal">${escape(hint.client_signal || "")}</div>
+      ${hint.objection_detected ? `<div class="signal">⚠️ Objection: ${escape(hint.objection_detected)}</div>` : ""}
+      <div class="action"><strong>Next step:</strong> ${escape(hint.suggested_action || "")}</div>
+      ${hint.suggested_phrasing ? `<div class="phrasing">💬 "${escape(hint.suggested_phrasing)}"</div>` : ""}
+      ${hint.compliance_flag ? `<div class="compliance">⛔ ${escape(hint.compliance_flag)}</div>` : ""}
+    `;
+    $hints.appendChild(div);
+    $hints.scrollTop = $hints.scrollHeight;
+
+    // Sentiment bar: append a colored bar segment
+    const bar = document.createElement("div");
+    bar.style.background = sentColorMap[sent] || "#8b949e";
+    $sentbar.appendChild(bar);
+  }
+
+  function escape(s) {
+    return String(s).replace(/[&<>"']/g,
+      c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]);
+  }
+</script>
+
+</body>
+</html>

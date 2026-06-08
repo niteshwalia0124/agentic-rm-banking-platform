@@ -1,0 +1,29 @@
+{
+  "name": "Agent Teams for RM — AMFI NAV Agent",
+  "version": "1.0.0",
+  "url": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A<YOUR_AWS_ACCOUNT_ID>%3Aruntime%2F<AMFI_AGENT_RUNTIME_ID>/invocations/",
+  "protocolVersion": "0.3.0",
+  "description": "Fetches live NAV, 1Y/3Y/5Y returns, AUM, and category for Indian mutual funds from AMFI. Runs on AWS Bedrock AgentCore (us-east-1). Auth: AWS SigV4.",
+  "preferredTransport": "JSONRPC",
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
+  "capabilities": {
+    "streaming": false
+  },
+  "provider": {
+    "organization": "Agent Teams for Relationship Managers",
+    "url": "https://aws.amazon.com/bedrock/agentcore/"
+  },
+  "skills": [
+    {
+      "id": "get_nav",
+      "name": "Get Mutual Fund NAV",
+      "description": "Returns current NAV, trailing returns (1Y/3Y/5Y), AUM, and fund category for a given mutual fund name.",
+      "tags": ["mutual-fund", "nav", "amfi", "india"],
+      "examples": [
+        "Get NAV for HDFC Mid-Cap Opportunities",
+        "What is the current NAV of SBI Bluechip Fund?"
+      ]
+    }
+  ]
+}

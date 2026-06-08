@@ -1,0 +1,17 @@
+.gcloudignore
+.git
+.gitignore
+.env
+.venv
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.DS_Store
+*.egg-info
+docs/
+tests/
+observability/
+infra/
+cloudbuild.yaml
+README.md
