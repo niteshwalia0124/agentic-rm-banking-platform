@@ -38,44 +38,6 @@ This repository showcases a complete reference architecture for modern banking a
 
 ![High Level Architecture](images/HLD.png)
 
-The following diagram illustrates the detailed relationship between the Relationship Manager, the A2A Gateway, the core orchestration sub-agents, the Model Context Protocol (MCP) tool integrations, and real-time telephony streaming:
-
-```mermaid
-graph TD
-    User([💼 Relationship Manager]) -->|Google Chat / Web| Gateway[⚡ Agent Gateway]
-    
-    subgraph App [🧠 Orchestration Layer]
-        Gateway -->|Route| Orchestrator[👑 Root Orchestrator Agent]
-        Orchestrator -->|A2A Protocol| ClientAgent[🔍 Client Intel Agent]
-        Orchestrator -->|A2A Protocol| PortfolioAgent[📈 Portfolio Agent]
-        Orchestrator -->|A2A Protocol| CommsAgent[✉️ Comms Agent]
-        Orchestrator -->|A2A Protocol| ComplianceAgent[🛡️ Compliance Agent]
-        Orchestrator -->|A2A Protocol| VoiceAgent[📞 Voice Agent]
-    end
-
-    subgraph Tools [🛠️ Model Context Protocol - MCP Tools]
-        ClientAgent & ComplianceAgent & PortfolioAgent & CommsAgent & VoiceAgent -->|JSON RPC| MCPRegistry[🔗 MCP Registry]
-        MCPRegistry --> CoreMCP[🏦 Core Banking MCP]
-        MCPRegistry --> PortfolioMCP[💰 Portfolio Wealth MCP]
-        MCPRegistry --> CommsMCP[✉️ Comms MCP]
-        MCPRegistry --> ComplianceMCP[⚖️ Compliance MCP]
-        MCPRegistry --> VoiceMCP[🎙️ Voice MCP]
-    end
-
-    subgraph Systems [🛢️ Back-End Services]
-        CoreMCP & PortfolioMCP & ComplianceMCP -->|Private Service Connect| BQ[(📊 BigQuery Mock CBS)]
-        CommsMCP -->|OAuth 2.1| Gmail[📧 Gmail API]
-        VoiceMCP -->|Calls.json API| Twilio[📞 Twilio Voice Outbound]
-        Twilio -->|WebSockets Media Streams| LiveBroker[🎙️ LiveAPI Broker]
-        LiveBroker <-->|Real-time WebSockets| GeminiLive[⚡ Gemini Live API]
-    end
-    
-    subgraph Obs [📈 Telemetry & Ops]
-        App & Tools -->|OTel Metrics/Traces| OTel[📊 OTel Collector]
-        OTel -->|Export| GCPMon[☁️ Cloud Monitoring & Trace]
-    end
-```
-
 ---
 
 ## 🛠️ Technical Stack & Agentic Design Patterns
