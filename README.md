@@ -34,9 +34,11 @@ This repository showcases a complete reference architecture for modern banking a
 
 ---
 
-## 📐 System Architecture
+## 📐 High Level Architecture
 
-The following diagram illustrates the relationship between the Relationship Manager, the A2A Gateway, the core orchestration sub-agents, the Model Context Protocol (MCP) tool integrations, and real-time telephony streaming:
+![High Level Architecture](images/HLD.png)
+
+The following diagram illustrates the detailed relationship between the Relationship Manager, the A2A Gateway, the core orchestration sub-agents, the Model Context Protocol (MCP) tool integrations, and real-time telephony streaming:
 
 ```mermaid
 graph TD
